@@ -1,0 +1,27 @@
+{
+  "name": "bytematrix-server",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node --loader ts-node/esm --watch src/index.ts",
+    "dev:transpile": "set TS_NODE_TRANSPILE_ONLY=true&& node --loader ts-node/esm --watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "seed": "node --loader ts-node/esm src/seed.ts",
+    "seed:metrics": "node --loader ts-node/esm src/seedMetrics.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "mongoose": "^8.7.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  }
+}

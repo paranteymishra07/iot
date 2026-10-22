@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 7%;
+    --foreground: 210 40% 96%;
+    --card: 222 40% 11%;
+    --card-foreground: 210 40% 96%;
+    --popover: 222 40% 9%;
+    --popover-foreground: 210 40% 96%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 7%;
+    --secondary: 222 30% 18%;
+    --secondary-foreground: 210 40% 96%;
+    --muted: 222 30% 15%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 222 47% 7%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 222 30% 18%;
+    --input: 222 30% 15%;
+    --ring: 217 91% 60%;
+    --radius: 0.5rem;
+    --sidebar-background: 222 47% 5%;
+    --sidebar-foreground: 210 40% 80%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 30% 12%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 222 30% 14%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-industrial-bg text-foreground;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0a0c14;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a3050;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3b82f6;
+  }
+}
+
+@layer components {
+  .industrial-card {
+    @apply bg-industrial-card border border-industrial-border rounded-lg;
+  }
+  .status-dot {
+    @apply inline-block w-2 h-2 rounded-full;
+  }
+  .metric-value {
+    @apply font-mono text-2xl font-bold text-white;
+  }
+  .metric-label {
+    @apply text-xs text-muted-foreground uppercase tracking-wider;
+  }
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-md text-sm font-medium transition-all duration-150 cursor-pointer;
+  }
+  .nav-item.active {
+    @apply bg-brand-primary/20 text-brand-primary border border-brand-primary/30;
+  }
+  .nav-item:not(.active) {
+    @apply text-[hsl(215,20%,55%)] hover:bg-industrial-hover hover:text-white;
+  }
+  .trend-up {
+    @apply text-status-running text-xs font-medium;
+  }
+  .trend-down {
+    @apply text-status-down text-xs font-medium;
+  }
+  .badge-critical {
+    @apply bg-status-down/20 text-status-down border border-status-down/30 text-xs px-2 py-0.5 rounded font-medium;
+  }
+  .badge-warning {
+    @apply bg-status-idle/20 text-status-idle border border-status-idle/30 text-xs px-2 py-0.5 rounded font-medium;
+  }
+  .badge-info {
+    @apply bg-brand-primary/20 text-brand-primary border border-brand-primary/30 text-xs px-2 py-0.5 rounded font-medium;
+  }
+  .badge-running {
+    @apply bg-status-running/20 text-status-running border border-status-running/30 text-xs px-2 py-0.5 rounded font-medium;
+  }
+  .live-indicator {
+    @apply flex items-center gap-1.5 text-xs font-medium text-status-running;
+  }
+  .live-indicator::before {
+    content: "";
+    @apply inline-block w-1.5 h-1.5 rounded-full bg-status-running animate-blink;
+  }
+}
